@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.util.UUID;
 
 @Entity
@@ -12,4 +13,6 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class Test extends GenericEntity<UUID> {
 
+    @OneToOne
+    public Test self;
 }
