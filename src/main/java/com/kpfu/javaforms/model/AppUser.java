@@ -17,6 +17,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 public class AppUser extends GenericEntity<Long> implements UserDetails {
 
+    private Long mulan;
     private String username;
     private String nickname;
     private String password;
