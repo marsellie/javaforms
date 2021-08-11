@@ -1,7 +1,8 @@
-package com.kpfu.javaforms.model;
+package com.kpfu.javaforms.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.kpfu.javaforms.entity.base.LongEntity;
+import lombok.*;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,20 +10,25 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Set;
 
 @Entity
-@Data
-@EqualsAndHashCode(callSuper = true)
-public class AppUser extends GenericEntity<Long> implements UserDetails {
-
-    private Long mulan;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class AppUser extends LongEntity implements UserDetails {
+    {
+    }
+    @NotBlank
     private String username;
     private String nickname;
     private String password;
 
-    @ElementCollection(targetClass = Roles.class)
+    @ElementCollection
     @Enumerated(value = EnumType.STRING)
     private Set<Roles> authorities;
 
